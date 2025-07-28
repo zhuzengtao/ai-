@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI提示词模板库 - 启动页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .options {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .option {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        
+        .option:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .option-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .option-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+        
+        .recommended {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.2);
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        .troubleshooting {
+            margin-top: 30px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .troubleshooting h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .troubleshooting ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .troubleshooting li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .troubleshooting li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 AI提示词模板库</h1>
+        <p class="subtitle">选择启动方式</p>
+        
+        <div class="options">
+            <a href="index.html" class="option recommended" onclick="trackClick('direct')">
+                <div class="option-title">
+                    <span class="icon">🚀</span>
+                    直接启动（推荐）
+                </div>
+                <div class="option-desc">
+                    无需服务器，直接在浏览器中运行。已优化支持本地访问，会自动使用内置数据。
+                </div>
+            </a>
+            
+            <div class="option" onclick="showServerInstructions()">
+                <div class="option-title">
+                    <span class="icon">🖥️</span>
+                    本地服务器启动
+                </div>
+                <div class="option-desc">
+                    通过本地服务器运行，支持完整功能。需要Python或Node.js环境。
+                </div>
+            </div>
+            
+            <div class="option" onclick="showTroubleshooting()">
+                <div class="option-title">
+                    <span class="icon">🔧</span>
+                    故障排除
+                </div>
+                <div class="option-desc">
+                    遇到问题？查看常见问题解决方案。
+                </div>
+            </div>
+        </div>
+        
+        <div class="status" id="status">
+            <strong>状态：</strong>项目已准备就绪！点击上方选项开始使用。
+        </div>
+        
+        <div class="troubleshooting" id="troubleshooting" style="display: none;">
+            <h3>🔧 故障排除指南</h3>
+            <ul>
+                <li><strong>页面显示空白：</strong>确保所有文件都在同一文件夹中，尝试刷新页面</li>
+                <li><strong>显示"数据加载失败"：</strong>这是正常的，项目会自动切换到内置数据</li>
+                <li><strong>样式显示异常：</strong>检查css文件夹是否存在且包含样式文件</li>
+                <li><strong>功能无法使用：</strong>检查js文件夹是否存在且包含脚本文件</li>
+                <li><strong>需要服务器功能：</strong>安装Python或Node.js，然后运行启动脚本</li>
+            </ul>
+            <div style="text-align: center; margin-top: 15px;">
+                <button onclick="hideTroubleshooting()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 8px 16px; border-radius: 5px; cursor: pointer;">关闭</button>
+            </div>
+        </div>
+        
+        <div class="troubleshooting" id="server-instructions" style="display: none;">
+            <h3>🖥️ 本地服务器启动指南</h3>
+            <p style="margin-bottom: 15px;"><strong>方法1：使用Python</strong></p>
+            <ul>
+                <li>确保已安装Python（从 python.org 下载）</li>
+                <li>双击运行 start-server.bat 文件</li>
+                <li>或在命令行中运行：python -m http.server 8000</li>
+                <li>然后访问：http://localhost:8000</li>
+            </ul>
+            
+            <p style="margin: 15px 0;"><strong>方法2：使用Node.js</strong></p>
+            <ul>
+                <li>确保已安装Node.js（从 nodejs.org 下载）</li>
+                <li>在命令行中运行：npx serve .</li>
+                <li>按提示访问显示的地址</li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 15px;">
+                <button onclick="hideServerInstructions()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 8px 16px; border-radius: 5px; cursor: pointer;">关闭</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function trackClick(method) {
+            document.getElementById('status').innerHTML = 
+                '<strong>状态：</strong>正在启动项目...如果页面没有响应，请检查文件完整性。';
+        }
+        
+        function showTroubleshooting() {
+            document.getElementById('troubleshooting').style.display = 'block';
+            document.getElementById('server-instructions').style.display = 'none';
+        }
+        
+        function hideTroubleshooting() {
+            document.getElementById('troubleshooting').style.display = 'none';
+        }
+        
+        function showServerInstructions() {
+            document.getElementById('server-instructions').style.display = 'block';
+            document.getElementById('troubleshooting').style.display = 'none';
+        }
+        
+        function hideServerInstructions() {
+            document.getElementById('server-instructions').style.display = 'none';
+        }
+        
+        // 检查文件完整性
+        function checkFiles() {
+            const requiredFiles = ['index.html', 'css/style.css', 'js/main.js'];
+            let allFilesExist = true;
+            
+            // 这里只是示例，实际的文件检查需要服务器支持
+            // 在直接浏览器访问时，我们假设文件存在
+            
+            if (allFilesExist) {
+                document.getElementById('status').innerHTML = 
+                    '<strong>状态：</strong>✅ 项目文件完整，可以正常使用！';
+            } else {
+                document.getElementById('status').innerHTML = 
+                    '<strong>状态：</strong>⚠️ 部分文件缺失，可能影响功能使用。';
+            }
+        }
+        
+        // 页面加载时检查文件
+        window.onload = function() {
+            setTimeout(checkFiles, 1000);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+/* 响应式设计 */
+
+/* 大屏幕 (1200px 及以上) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .templates-grid {
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    }
+    
+    .hero-content h2 {
+        font-size: 3.5rem;
+    }
+}
+
+/* 中等屏幕 (768px - 1199px) */
+@media (max-width: 1199px) {
+    .hero-stats {
+        gap: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .templates-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
+
+/* 平板设备 (768px - 991px) */
+@media (max-width: 991px) {
+    .header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .search-bar {
+        flex-direction: column;
+        max-width: 100%;
+    }
+    
+    .filter-tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+    }
+    
+    .filter-tab {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    .templates-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* 小屏幕设备 (576px - 767px) */
+@media (max-width: 767px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .header {
+        padding: 0.8rem 0;
+    }
+    
+    .nav-brand h1 {
+        font-size: 1.2rem;
+    }
+    
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero {
+        padding: 2.5rem 0;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-stats {
+        gap: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .search-section {
+        padding: 2rem 0;
+    }
+    
+    .search-bar {
+        margin-bottom: 1.5rem;
+    }
+    
+    #search-input {
+        padding: 10px 12px 10px 40px;
+        font-size: 0.9rem;
+    }
+    
+    .search-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .filter-tabs {
+        gap: 0.5rem;
+    }
+    
+    .filter-tab {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .templates-section {
+        padding: 2rem 0;
+    }
+    
+    .templates-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .template-card {
+        padding: 1rem;
+    }
+    
+    .template-title {
+        font-size: 1.1rem;
+    }
+    
+    .template-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .modal-header,
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .footer {
+        padding: 1.5rem 0 1rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+/* 超小屏幕设备 (575px 及以下) */
+@media (max-width: 575px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .header .container {
+        gap: 0.5rem;
+    }
+    
+    .nav-brand {
+        gap: 5px;
+    }
+    
+    .nav-brand i {
+        font-size: 1.2rem;
+    }
+    
+    .nav-brand h1 {
+        font-size: 1rem;
+    }
+    
+    .nav-menu {
+        gap: 0.3rem;
+    }
+    
+    .nav-link {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .search-section {
+        padding: 1.5rem 0;
+    }
+    
+    .filter-tabs {
+        padding: 0 10px;
+    }
+    
+    .templates-section {
+        padding: 1.5rem 0;
+    }
+    
+    .template-card {
+        padding: 0.8rem;
+    }
+    
+    .template-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .template-category {
+        align-self: flex-start;
+    }
+    
+    .favorite-btn {
+        position: absolute;
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+    
+    .modal-content {
+        width: 98%;
+        max-height: 95vh;
+    }
+    
+    .modal-header {
+        padding: 0.8rem;
+    }
+    
+    .modal-body {
+        padding: 0.8rem;
+    }
+    
+    .prompt-text {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .footer {
+        padding: 1rem 0;
+    }
+}
+
+/* 横屏模式优化 */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 1.5rem 0;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-content p {
+        margin-bottom: 1rem;
+    }
+    
+    .hero-stats {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+    
+    .search-section {
+        padding: 1.5rem 0;
+    }
+    
+    .templates-section {
+        padding: 1.5rem 0;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .header,
+    .search-section,
+    .footer {
+        display: none;
+    }
+    
+    .main-content {
+        margin-top: 0;
+    }
+    
+    .template-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .template-actions {
+        display: none;
+    }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+    .template-card {
+        border: 2px solid #333;
+    }
+    
+    .filter-tab {
+        border-width: 2px;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background-color: rgba(255,255,255,0.3);
+    }
+}
+
+/* 减少动画模式支持 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .template-card:hover {
+        transform: none;
+    }
+    
+    .search-btn:hover {
+        transform: none;
+    }
+}

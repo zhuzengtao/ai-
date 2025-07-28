@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI提示词模板库 - AI Prompt Templates Hub</title>
+    <meta name="description" content="精心整理的AI提示词模板库，涵盖编程、写作、设计、营销等各个领域，让每个人都能高效使用AI工具">
+    <meta name="keywords" content="AI提示词,ChatGPT,Claude,提示词模板,AI工具,人工智能">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-brain"></i>
+                <h1>AI提示词模板库</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link active">首页</a>
+                <a href="#templates" class="nav-link">模板库</a>
+                <a href="#favorites" class="nav-link">收藏夹</a>
+                <a href="https://github.com/yourusername/AI-Prompt-Templates-Hub" class="nav-link" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <!-- 英雄区域 -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>让AI更懂你的需求</h2>
+                    <p>精心整理的AI提示词模板库，涵盖编程、写作、设计、营销等各个领域</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-prompts">200+</span>
+                            <span class="stat-label">提示词模板</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">应用领域</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">用户使用</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 搜索和筛选区域 -->
+        <section class="search-section" id="templates">
+            <div class="container">
+                <!-- 服务器提示 -->
+                <div class="server-notice" id="serverNotice" style="display: none;">
+                    <div class="notice-content">
+                        <i class="fas fa-info-circle"></i>
+                        <span>当前显示20个示例模板。要查看完整的85个模板，请使用服务器方式访问：</span>
+                        <code>python -m http.server 8000</code>
+                        <span>然后访问 http://localhost:8000</span>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="搜索提示词模板...">
+                    </div>
+                    <button class="search-btn" id="search-btn">搜索</button>
+                </div>
+                
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-category="all">全部</button>
+                    <button class="filter-tab" data-category="programming">编程开发</button>
+                    <button class="filter-tab" data-category="writing">写作文案</button>
+                    <button class="filter-tab" data-category="design">设计创意</button>
+                    <button class="filter-tab" data-category="marketing">营销推广</button>
+                    <button class="filter-tab" data-category="education">教育学习</button>
+                    <button class="filter-tab" data-category="business">商业分析</button>
+                    <button class="filter-tab" data-category="translation">翻译润色</button>
+                    <button class="filter-tab" data-category="other">其他</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 模板展示区域 -->
+        <section class="templates-section">
+            <div class="container">
+                <div class="templates-grid" id="templates-grid">
+                    <!-- 模板卡片将通过JavaScript动态生成 -->
+                </div>
+                
+                <div class="loading" id="loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>加载中...</span>
+                </div>
+                
+                <div class="no-results" id="no-results" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>未找到相关模板</h3>
+                    <p>尝试使用其他关键词搜索</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 收藏夹区域 -->
+        <section class="favorites-section" id="favorites-section" style="display: none;">
+            <div class="container">
+                <h2>我的收藏</h2>
+                <div class="favorites-grid" id="favorites-grid">
+                    <!-- 收藏的模板将在这里显示 -->
+                </div>
+                <div class="empty-favorites" id="empty-favorites">
+                    <i class="fas fa-heart"></i>
+                    <h3>还没有收藏任何模板</h3>
+                    <p>点击模板卡片上的心形图标来收藏喜欢的模板</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 模板详情模态框 -->
+    <div class="modal" id="template-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title"></h3>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="template-info">
+                    <div class="template-category" id="modal-category"></div>
+                    <div class="template-tags" id="modal-tags"></div>
+                </div>
+                <div class="template-content">
+                    <h4>提示词内容：</h4>
+                    <div class="prompt-text" id="modal-prompt"></div>
+                    <button class="copy-btn" id="modal-copy-btn">
+                        <i class="fas fa-copy"></i>
+                        复制提示词
+                    </button>
+                </div>
+                <div class="template-usage" id="modal-usage">
+                    <h4>使用说明：</h4>
+                    <p id="modal-usage-text"></p>
+                </div>
+                <div class="template-example" id="modal-example">
+                    <h4>使用示例：</h4>
+                    <div class="example-content" id="modal-example-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AI提示词模板库</h4>
+                    <p>让AI更懂你的需求，提高工作效率</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#templates">模板库</a></li>
+                        <li><a href="https://github.com/yourusername/AI-Prompt-Templates-Hub">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>如有问题或建议，欢迎在GitHub上提交Issue</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI提示词模板库. 开源项目，欢迎贡献。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript文件 -->
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
